@@ -19,7 +19,7 @@ void anteriorDeUnNumero(int);
 int posteriorDeUnNumero(int);
 //f) Una funcion que solicite al usuario ingresar un numero entero y muestre en pantalla los resultados de aplicar todas las funciones anteriores sobre ese valor.
 void ingresarNumero();
-//3.2 Una funcion de devuelva el posterior del doble de un numero
+//3.3 Una funcion de devuelva el posterior del doble de un numero
 int posteriorDelDobleDe(int);
 
 //------  INVOCACION  ------
@@ -78,7 +78,7 @@ void ingresarNumero(){
 	scanf("%d", &numeroEnteroDeUsuario);
 }
 
-//3.2
+//3.3
 int posteriorDelDobleDe(int n){
 	int doble = dobleDeUnNumero(n);
 	return posteriorDeUnNumero(doble);
