@@ -1,5 +1,4 @@
 #include <stdio.h>
-
 //------  PROTOTIPOS  ------
 void imprimirParteSuperiorPie();
 void imprimirParteInferiorPie();
@@ -31,4 +30,3 @@ void imprimirParteSuperiorPie(){
 void imprimirParteInferiorPie(){
 	printf(" ...( \n  ._)");
 }
-
