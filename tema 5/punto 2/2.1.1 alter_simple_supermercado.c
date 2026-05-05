@@ -1,3 +1,20 @@
+/*
+OBJETIVO:
+Calcular el total de una compra y aplicar una bonificación según
+condiciones de pago o cantidad de productos.
+
+ESTRATEGIA:
+Solicitar cantidad, precio y forma de pago, calcular el importe total,
+evaluar si corresponde una bonificación y mostrar el ticket con el
+total final a pagar.
+
+MODULOS:
+- ingresarDatos(): solicita cantidad, precio y forma de pago.
+- calcularImporte(): calcula el total de la compra.
+- aplicarBeneficio(): determina la bonificación según condiciones.
+- emitirTicket(): coordina el proceso y muestra el ticket final.
+*/
+
 #include <stdio.h>
 //Variables globales
 int cantidad;

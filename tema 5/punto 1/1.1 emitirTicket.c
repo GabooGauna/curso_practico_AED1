@@ -1,3 +1,18 @@
+/*
+OBJETIVO:
+Calcular el importe total de una compra en base a la cantidad de unidades
+y el precio unitario ingresados por el usuario.
+
+ESTRATEGIA:
+Solicitar cantidad y precio, calcular el total multiplicando ambos valores
+y mostrar un ticket con los datos de la compra.
+
+MODULOS:
+- ingresarDatos(): solicita cantidad y precio.
+- calcularImporte(): calcula el total (cantidad * precio).
+- emitirTicket(): coordina el proceso y muestra el ticket.
+*/
+
 #include <stdio.h>
 //Variables globales
 int cantidad;

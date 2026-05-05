@@ -1,3 +1,19 @@
+/*
+OBJETIVO:
+Determinar el monto de préstamo que puede obtener un solicitante
+en base a su sueldo.
+
+ESTRATEGIA:
+Solicitar el sueldo del usuario, evaluar si cumple con el mínimo
+para un préstamo fijo o calcular uno proporcional, y mostrar el
+monto disponible.
+
+MODULOS:
+- ingresarDatos(): solicita el sueldo del solicitante.
+- autorizarPrestamo(): calcula el monto del préstamo.
+- totalPrestamo(): coordina el proceso y muestra el resultado.
+*/
+
 #include <stdio.h>
 //Variables globales
 double sueldoSolicitante;

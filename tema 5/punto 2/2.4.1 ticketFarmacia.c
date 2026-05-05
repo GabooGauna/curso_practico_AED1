@@ -1,3 +1,20 @@
+/*
+OBJETIVO:
+Calcular el importe final de una compra aplicando una bonificación
+según el tipo de producto seleccionado.
+
+ESTRATEGIA:
+Solicitar cantidad, precio y tipo de producto, calcular el importe total,
+determinar el porcentaje de descuento correspondiente y mostrar
+el total a pagar junto con el porcentaje aplicado.
+
+MODULOS:
+- ingresarDatos(): solicita cantidad, precio y tipo de producto.
+- importe(): calcula el total de la compra.
+- bonificacion(): aplica el descuento según el tipo de producto.
+- emitirTicket(): coordina el proceso y muestra el resultado final.
+*/
+
 #include <stdio.h>
 //------  PROTOTIPOS  ------
 void ingresarDatos();

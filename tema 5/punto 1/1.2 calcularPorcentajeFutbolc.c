@@ -1,3 +1,18 @@
+/*
+OBJETIVO:
+Calcular el porcentaje de victorias de un equipo en base a los partidos
+jugados y ganados.
+
+ESTRATEGIA:
+Solicitar la cantidad de partidos jugados y ganados, calcular el porcentaje
+de victorias y mostrar el resultado en pantalla.
+
+MODULOS:
+- ingresarDatos(): solicita partidos jugados y ganados.
+- porcentajeVictorias(): calcula el porcentaje de victorias.
+- mostrarDatosDeEquipo(): coordina el proceso y muestra el resultado.
+*/
+
 #include <stdio.h>
 //Variables globales
 int partidosJugados;

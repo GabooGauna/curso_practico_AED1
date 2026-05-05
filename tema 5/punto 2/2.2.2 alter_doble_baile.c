@@ -1,3 +1,20 @@
+/*
+OBJETIVO:
+Calcular el precio final de una entrada para un baile de egresados
+según el tipo de entrada y si fue comprada de forma anticipada.
+
+ESTRATEGIA:
+Solicitar si la entrada es anticipada y el tipo de consumición,
+determinar el precio base, aplicar descuento si corresponde
+y mostrar el comprobante con el importe final.
+
+MODULOS:
+- ingresarDatos(): solicita tipo de entrada y compra anticipada.
+- calcularPrecioBase(): determina el precio según consumición.
+- calcularPrecioFinal(): aplica descuento si corresponde.
+- imprimirEntrada(): coordina el proceso y muestra el comprobante.
+*/
+
 #include <stdio.h>
 //Variables globales
 char entradaAnticipada;
