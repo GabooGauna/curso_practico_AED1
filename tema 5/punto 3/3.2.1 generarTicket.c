@@ -1,3 +1,19 @@
+/*
+OBJETIVO:
+Generar un ticket de compra acumulando subtotales de productos
+hasta que el usuario indique fin de carga.
+
+ESTRATEGIA:
+Solicitar cantidad, precio y descripción de productos de forma repetitiva,
+calcular el subtotal de cada uno, acumular el total general y finalizar
+cuando se ingrese -1 en la cantidad.
+
+MODULOS:
+- ingresarDatos(): solicita datos del producto.
+- subtotal(): calcula el importe por producto.
+- generarTicket(): coordina la carga y muestra el total final.
+*/
+
 #include <stdio.h>
 #define GUIONES "--------------------"
 
@@ -52,5 +68,7 @@ void generarTicket(){
 		importeTotal += sub;
 		ingresarDatos();
 	}
-	printf("Su importe total es de: $ %.2lf", importeTotal);
+	printf("%s\n", GUIONES);
+	printf("Su importe total es de: $ %.2lf\n", importeTotal);
+	printf("%s\n", GUIONES);
 }

@@ -1,17 +1,36 @@
+/*
+OBJETIVO:
+Calcular el total recaudado y la cantidad de pasajeros en una jornada
+de transporte en base a los kilómetros recorridos por cada pasajero.
+
+ESTRATEGIA:
+Solicitar los kilómetros de cada pasajero, calcular la tarifa individual,
+acumular el total recaudado y contar pasajeros hasta que se indique
+el fin de la jornada laboral.
+
+MODULOS:
+- jornada(): consulta si finaliza la jornada.
+- cantidadKm(): solicita los kilómetros recorridos.
+- tarifaTotal(): calcula el costo del viaje.
+- importeRecaudado(): coordina el proceso y muestra resultados.
+*/
+
 #include <stdio.h>
 #define FILAESTRELLAS "********************************"
 
+//------  PROTOTIPOS  ------
 char jornadaLaboral();
 double cantidadKm();
 double tarifaTotal(double);
 void importeRecaudado();
 
-
+//------  INVOCACION  ------
 int main(){
 	importeRecaudado();
 	return 0;
 }
 
+//------  DESARROLLO  ------
 char jornada(){
 	char jornadaLaboral;
 	printf("%s\n", FILAESTRELLAS);
@@ -36,6 +55,7 @@ double tarifaTotal(double km){
 	return total;
 }
 
+//funcion contenedora
 void importeRecaudado(){
 	int pasajeros = 0;
 	double total = 0;
