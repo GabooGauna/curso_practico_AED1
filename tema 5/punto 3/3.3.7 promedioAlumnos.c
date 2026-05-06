@@ -1,39 +1,43 @@
-/*	
-	OBJETIVO: Determinar el estado académico de un alumno (Promoción, Regular o Libre)
-              según sus notas y verificar si posee libreta universitaria.
-    
-    ESTRATEGIA:
-			  Solicitar los datos del alumno, validar si tiene libreta, pedir notas,
-              calcular el promedio y determinar su condición final.
-              
-    MODULOS:
-			- datosDeAlumno(): solicita nombre y verifica libreta.
-			- promedio(): calcula el promedio de dos notas.
-			- regularidad(): determina el estado (P, R, L).
-			- estadoAlumno(): coordina el proceso general del programa.
+/*
+OBJETIVO:
+Determinar la situación académica de un alumno (Promoción, Regular o Libre)
+en base a sus notas y validando que posea libreta universitaria.
+
+ESTRATEGIA:
+Solicitar datos del alumno (nombre, libreta y notas), verificar si puede rendir,
+evaluar si aprueba cada examen y calcular el promedio para definir su condición final.
+
+MODULOS:
+- alumno(): solicita los datos y coordina el proceso.
+- estadoAlumno(): muestra los datos y determina la situación académica.
+- aprobado(): verifica si una nota es aprobada.
+- promedio(): calcula el promedio de las notas.
 */
 
 #include <stdio.h>
+#include <stdbool.h>
+#include <windows.h>
 #define FILAESTRELLAS "********************************"
 
 //------  PROTOTIPOS  ------
-char datosDeAlumno();
-double promedio(double, double);
-char regularidad(double, double);
-void estadoAlumno();
+float promedio(float, float);
+void alumno();
+void estadoAlumno(float,float,char[50],char,int);
+bool aprobado(float);
 
 //------  VARIABLES GLOBALES  ------
 
 
 //------  INVOCACION  ------
 int main(){
-	estadoAlumno();
+	alumno();
 	return 0;
 }
 
-//------  DESARROLLO  ------
-//pedir datos del alumno
-char datosDeAlumno(){
+//funcion principal 
+void alumno(){
+	float notaPrimerParcial;
+	float notaSegundoParcial;
 	char libreta; // si posee o no libreta universitaria
 	char alumno[50];  //nombre alumno
 	int libretaUniversitaria; //numero de libreta univ
@@ -50,102 +54,55 @@ char datosDeAlumno(){
 	scanf("%c", &libreta);
 	fflush(stdin);
 	
-	//preguntar numero de libreta universitaria y validar
-	if(libreta == 's' || libreta == 'S'){
+	 if (libreta == 'n' || libreta == 'N'){
+			printf("No puede rendir examen por no tener libreta universitaria.");
+			return;
+	}
+	//numero de la libreta universitaria
 	printf("Ingrese los 6 numeros de su libreta universitaria: \n");
 	scanf("%d", &libretaUniversitaria);
 	fflush(stdin);
-	}
-	return libreta;
-}
-
-//calcular promedio de ambos examenes
-double promedio(double exam1, double exam2){
-	double promedioFinal = (exam1 + exam2) / 2;  
-	return promedioFinal;
-}
-
-//verificar estado de regularidad del alumno
-char regularidad(double exam1, double exam2){
-	double promedioFinal = promedio(exam1,exam2); 
-	char regular;
-	if(promedioFinal >= 7){
-		regular = 'P';
-	}
-	else if(exam1 >= 6 && exam2 >= 6){
-		regular = 'R';
-	}
-	else if(exam1 < 6 || exam2 < 6){
-		regular = 'L';
-	}
-	else{
-		printf("Error en el tipo de dato, intentelo mas tarde.\n");
-	}
-	return regular;
-}
-
-//funcion principal 
-void estadoAlumno(){
-	double notaPrimerParcial;
-	double notaSegundoParcial;
-	
-	//validar estado de libreta
-	char libreta;
-	libreta = datosDeAlumno();
-	if(libreta == 'n' || libreta == 'N'){
-		printf("No puede rendir examen por no tener libreta universitaria.");
-		return;
-	}
-	else{
-		
-	//aclaracion regularidad
-	printf("%s\n", FILAESTRELLAS);
-	printf("Los estados para cada alumno son los siguientes:\n");
-	printf("P - Promocion\nR - Regular\nL - Libre\n\n\n");
-	
 	//nota primer parcial
 	printf("Ingrese la nota del primer parcial: \n");
-	scanf("%lf", &notaPrimerParcial);
+	scanf("%f", &notaPrimerParcial);
 	fflush(stdin);
 	
 	//nota segundo parcial
 	printf("Ingrese la nota del segundo parcial: \n");
-	scanf("%lf", &notaSegundoParcial);
+	scanf("%f", &notaSegundoParcial);
 	fflush(stdin);
 	
-	//promedio final
-	double promedioFinal = promedio(notaPrimerParcial,notaSegundoParcial);
-	printf("El promedio final es de: %.2lf\n", promedioFinal);
+	estadoAlumno(notaPrimerParcial,notaSegundoParcial,alumno,libreta,libretaUniversitaria);
 	
-	//mostrar estado de regularidad
-	printf("El estado de regularidad es: %c\n", regularidad(notaPrimerParcial, notaSegundoParcial));
-	printf("%s\n", FILAESTRELLAS);
-	}
 }
 
-/*
-CASOS DE PRUEBA:
+//mouestra datos y condicion del alumno
+void estadoAlumno(float n1,float n2,char nombreA [50],char libreta,int libretaUnivtaria){
+	system("cls");
+	printf("%s\n", FILAESTRELLAS);
+	printf(" Alumno: %s\n",nombreA);
+	printf(" Numero de libreta: %d\n",libretaUnivtaria);
+	printf(" Nota del primer parcial: '%.2f'\n",n1);
+	printf(" Nota del segundo parcial: '%.2f'\n",n2);
+	printf(" Situacion: ");
+	if ( aprobado( n1 ) && aprobado( n2 ) && promedio( n1, n2 ) >= 7){
+		printf("'Promociono'\n");
+		printf(" Nota final: %.2f\n", promedio( n1, n2 ));
+	}else if ( aprobado( n1 ) && aprobado( n2 ) ){
+		printf("'Regularizo'\n");
+	}else{
+		printf("'Libre'\n");
+	}
+	printf("%s", FILAESTRELLAS);
 
-1)
-Libreta: N
-Resultado esperado:
-No puede rendir examen por no tener libreta universitaria.
+}
 
-2)
-Libreta: S
-Notas: 8 y 7
-Promedio: 7.5
-Resultado esperado: P (Promoción)
+//retorna un bool si aprobo el examen
+bool aprobado(float nota){
+	return nota >= 6.0;
+}
 
-3)
-Libreta: S
-Notas: 6 y 6
-Promedio: 6
-Resultado esperado: R (Regular)
-
-4)
-Libreta: S
-Notas: 5 y 7
-Promedio: 6
-Resultado esperado: L (Libre)
-*/
+//calcular promedio de ambos examenes
+float promedio(float exam1, float exam2){
+	return (exam1 + exam2) / 2;
+}
