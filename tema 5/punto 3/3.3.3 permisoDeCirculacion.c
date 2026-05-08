@@ -25,12 +25,19 @@ bool esPar(int);
 void imprimirDiaEnLetras(int);
 bool determinaAutorizacion(int, int);
 void permisoParaCircular();
+int preguntarContinuar();
 
 //------  INVOCACION  ------
 int main(){
-	permisoParaCircular();
-	return 0;
+	int opcion;
+	
+	do{
+		permisoParaCircular();
+		opcion = preguntarContinuar();
+	}while(opcion == 1);
+	
 	system("pause");
+	return 0;
 }
 
 //------  DESARROLLO  ------
@@ -75,6 +82,7 @@ void imprimirDiaEnLetras(int dia){
 		}
 	}
 }
+
 bool determinaAutorizacion(int dia, int num){
 	bool autorizado;
 	if(dia == 7){
@@ -96,6 +104,7 @@ void permisoParaCircular(){
 	int dni;
 	int dia;
 	
+	//ingreso de datos
 	printf("Ingrese el ultimo numero de su documento:\n");
 	scanf("%d", &dni);
 	fflush(stdin);
@@ -107,6 +116,7 @@ void permisoParaCircular(){
 	
 	system("cls");
 	
+	//salida de datos
 	printf("%s\n", GUIONES);
 	printf("Dia de la semana: ");
 	imprimirDiaEnLetras(dia);
@@ -120,4 +130,17 @@ void permisoParaCircular(){
 		printf("'No autorizado'\n");
 	}
 	printf("%s\n", GUIONES);
+}
+
+int preguntarContinuar(){
+	int opcion;
+	printf("Desea ingresar un nuevo DNI?\n");
+	printf("1- Si\n2- No\n");
+	scanf("%d", &opcion);
+	fflush(stdin);
+	
+	system("cls");
+	
+	return opcion;
+	
 }
